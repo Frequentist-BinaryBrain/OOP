@@ -59,33 +59,45 @@ class DiceGame():
             # TODO: implement gameover
 
     def play_round(self):
-        # Welcome the user
-        print("------- New Round -------")
-        input("Press any key to Roll the dice 🎲")
+        #Welcome user
+        self.print_round_welcome()
 
         #Roll te dice 
         player_value = self._player.roll_die()
         computer_value = self._computer.roll_die()
 
         #show the values
-        print(f'Your dice: {player_value}')
-        print(f'Computer dice: {computer_value}')
+        self.show_dice(player_value, computer_value)
 
         #Determine Winner and Loser
         if player_value > computer_value:
             print("You won the round") 
-            self._player.decrement_counter() # Winner
-            self._computer.increment_counter() # Loser
+            self.update_counters(winner=self._player, loser=self._computer)
         elif computer_value > player_value:
             print("The computer won the round")
-            self._player.increment_counter() # Loser
-            self._computer.decrement_counter() # Winner
+            self.update_counters(winner=self._computer, loser=self._player)
         else:
             print("it is a TIE!!")
 
+        #show the counters
+        self.show_counters()
+
+    def print_round_welcome(self):
+        # Welcome the user
+        print("------- New Round -------")
+        input("Press any key to Roll the dice 🎲")
+
+    def show_dice(self, player_value, computer_value):
+        print(f'Your dice: {player_value}')
+        print(f'Computer dice: {computer_value}')
+        
+    def update_counters(self, winner, loser):
+        winner.decrement_counter
+        loser.increment_counter
+
+    def show_counters(self):
         print(f"Your counter: {self._player.counter}")
         print(f"Computer counter: {self._computer.counter}")
-
 
 # Testing Die class 
 die_game = Die()
