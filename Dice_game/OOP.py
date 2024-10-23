@@ -71,10 +71,10 @@ class DiceGame:
 
         # Determine Winner and Loser
         if player_value > computer_value:
-            print("You won the round") 
+            print("$$$$$You won the round$$$$$") 
             self.update_counters(winner=self._player, loser=self._computer)
         elif computer_value > player_value:
-            print("The computer won the round")
+            print("$$$$$The computer won the round$$$$$")
             self.update_counters(winner=self._computer, loser=self._player)
         else:
             print("It is a TIE!!")
